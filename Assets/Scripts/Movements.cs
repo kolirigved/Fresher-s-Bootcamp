@@ -38,7 +38,7 @@ public class Movements : MonoBehaviour
             transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             rb.velocity = new Vector2(-speed, 0)+rb.velocity;
         }
-        if(onGround && Input.GetKeyDown("up")||Input.GetKeyDown("w"))
+        if(onGround && (Input.GetKeyDown("up")||Input.GetKeyDown("w")))
         {
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         }
