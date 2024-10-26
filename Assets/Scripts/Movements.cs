@@ -6,7 +6,7 @@ public class Movements : MonoBehaviour
 {
     public float speed;
     public float jumpForce;
-    bool onGround;
+    public bool onGround;
     Rigidbody2D rb;
     void Start()
     {
@@ -38,9 +38,10 @@ public class Movements : MonoBehaviour
             transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             rb.velocity = new Vector2(-speed, 0)+rb.velocity;
         }
-        if(onGround && Input.GetKey("space"))
+        if(onGround && Input.GetKeyDown("space"))
         {
-            rb.AddForce(new Vector2(0, jumpForce));
+            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+            //onGround = false;
         }
     }
 }
