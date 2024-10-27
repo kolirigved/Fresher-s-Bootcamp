@@ -6,12 +6,16 @@ public class ShootingAI : MonoBehaviour
 {
     public Transform GunLocation;
     public GameObject Bullets;
-    public GameObject player;
+    GameObject player;
     public float speed;
 
     float direction;
 
     public float shootingCooldown = 2.0f;
+    void Start()
+    {
+        player = GameObject.FindWithTag("Player");
+    }
 
     // Update is called once per frame
     void Update()
