@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 7310749614886067709}
   - component: {fileID: 9025368919160981177}
   - component: {fileID: 7226367332615760844}
+  - component: {fileID: 5467756831294279016}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -205,6 +206,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GunLocation: {fileID: 2372159701133100980}
   Bullets: {fileID: 3240735309834195302, guid: 344460e57cde54a11a3f33902f9a3a74, type: 3}
-  player: {fileID: 0}
-  speed: 5
+  speed: 10
   shootingCooldown: 2
+--- !u!114 &5467756831294279016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8497178694974218694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6911d3850c247714395f98d4d729adfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0.007
+  onGround: 0
+  minDistance: 5

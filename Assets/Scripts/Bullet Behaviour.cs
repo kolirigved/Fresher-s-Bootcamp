@@ -10,10 +10,13 @@ public class BulletBehaviour : MonoBehaviour
         {
             Destroy(oth.gameObject);
         }
-        //Destroying the bullet
-        if(!oth.gameObject.CompareTag("Player"))
+        if (oth.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
+            Destroy(oth.gameObject);
+            Debug.Log("GameOver");
+            Time.timeScale = 0;
         }
+        Destroy(gameObject);
+        
     }
 }
