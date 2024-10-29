@@ -9,11 +9,14 @@ public class EnemyMovement : MonoBehaviour
     private Transform playerTransform;
     public bool onGround;
     public float minDistance;
+
+    Animator animator;
     void Start()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         playerTransform = player.transform;
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -30,6 +33,16 @@ public class EnemyMovement : MonoBehaviour
             else if(!onGround)   rb.AddForce(new Vector2(direction.x * moveSpeed,0), ForceMode2D.Impulse);
             else            rb.AddForce(direction * moveSpeed, ForceMode2D.Impulse);
         }
+        //Animator and flip the enemy
+        if(rb.velocity.x<0) {
+            animator.SetBool("isRunning", true);
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+        else if(rb.velocity.x>0) {
+            animator.SetBool("isRunning", true);
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+        else animator.SetBool("isRunning", false);
     }
     void OnCollisionEnter2D(Collision2D other)
     {

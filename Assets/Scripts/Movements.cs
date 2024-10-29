@@ -11,10 +11,12 @@ public class Movements : MonoBehaviour
     private Rigidbody2D rb;
     private float getAxisX;
     private float getAxisY;
-     
+    
+    private Animator animator;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
     void OnCollisionEnter2D(Collision2D other)
     {
@@ -34,6 +36,10 @@ public class Movements : MonoBehaviour
     {
         Move();
         Jump();
+        if(!onGround)
+        {
+            animator.SetBool("isRunning", false);
+        }
     }
     void Move()
     {
@@ -42,10 +48,16 @@ public class Movements : MonoBehaviour
         if(getAxisX > 0)
         {
             transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            animator.SetBool("isRunning", true);
         }
         else if (getAxisX < 0)
         {
             transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            animator.SetBool("isRunning", true);
+        }
+        else
+        {
+            animator.SetBool("isRunning", false);
         }
     }
     void Jump()
