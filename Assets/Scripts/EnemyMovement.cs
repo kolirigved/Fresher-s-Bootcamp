@@ -30,8 +30,7 @@ public class EnemyMovement : MonoBehaviour
         {
             Vector2 direction = (playerTransform.position - transform.position).normalized;
             if (Mathf.Abs(playerTransform.position.x - transform.position.x) < minDistance) direction = new Vector2(0,0);
-            else if(!onGround)   rb.AddForce(new Vector2(direction.x * moveSpeed,0), ForceMode2D.Impulse);
-            else            rb.AddForce(direction * moveSpeed, ForceMode2D.Impulse);
+            else rb.velocity = new Vector2(moveSpeed * direction.x, rb.velocity.y);
         }
         //Animator and flip the enemy
         if(rb.velocity.x<0) {
