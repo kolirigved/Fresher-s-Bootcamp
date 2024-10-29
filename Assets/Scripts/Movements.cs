@@ -38,7 +38,12 @@ public class Movements : MonoBehaviour
         Jump();
         if(!onGround)
         {
+            animator.SetBool("isJumping", true);
             animator.SetBool("isRunning", false);
+        }
+        else
+        {
+            animator.SetBool("isJumping", false);
         }
     }
     void Move()
